@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Intermediate Web Project</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f0f4f8;
+    }
+    header, footer {
+      background-color: #3f51b5;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    nav {
+      display: flex;
+      justify-content: space-around;
+      background-color: #ff6f61;
+      padding: 1rem;
+      color: white;
+    }
+    main {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      padding: 2rem;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      background-color: #fff3e0;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(63, 81, 181, 0.3);
+    }
+    input, textarea, button {
+      padding: 0.5rem;
+      border: 1px solid #ffab91;
+      border-radius: 4px;
+    }
+    button {
+      background-color: #4caf50;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #388e3c;
+    }
+    .todo {
+      background-color: #e3f2fd;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(33, 150, 243, 0.3);
+    }
+    .todo input[type="text"] {
+      width: 70%;
+    }
+    .todo button {
+      margin-left: 0.5rem;
+    }
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    li {
+      padding: 0.5rem;
+      background: #bbdefb;
+      margin-top: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      border-radius: 4px;
+    }
+    .task-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+    .task-meta {
+      font-size: 0.9em;
+      color: #555;
+      margin-top: 0.2em;
+    }
+    .task-completed {
+      color: #388e3c;
+      font-size: 0.9em;
+      margin-top: 0.2em;
+    }
+    li button {
+      background-color: #2196f3;
+      border: none;
+      padding: 0.3rem 0.5rem;
+      border-radius: 4px;
+      color: white;
+      margin-left: 0.5em;
+    }
+    li button:hover {
+      background-color: #1976d2;
+    }
+    @media (max-width: 768px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>My Web Project</h1>
+  </header>
+  <nav>
+    <div>Home</div>
+    <div>Contact</div>
+    <div>To-Do</div>
+  </nav>
+  <main>
+    <section>
+      <h2>Contact Us</h2>
+      <form id="contactForm">
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="email" id="email" placeholder="Your Email" required>
+        <textarea id="message" placeholder="Your Message" required></textarea>
+        <button type="submit">Send</button>
+      </form>
+    </section>
+    <section class="todo">
+      <h2>To-Do List</h2>
+      <div>
+        <input type="text" id="taskInput" placeholder="New Task">
+        <button onclick="addTask()">Add</button>
+      </div>
+      <ul id="taskList"></ul>
+    </section>
+  </main>
+  <footer>
+    &copy; 2025 My Project
+  </footer>
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      if (!name || !email || !message) {
+        alert('Please fill out all fields.');
+        return;
+      }
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        alert('Please enter a valid email address.');
+        return;
+      }
+      alert('Form submitted successfully!');
+      this.reset();
+    });
+    let taskCount = 0;
+    function addTask() {
+      const input = document.getElementById('taskInput');
+      const taskText = input.value.trim();
+      if (!taskText) return;
+      taskCount += 1;
+      const now = new Date();
+      const createdAt = now.toLocaleString();
+      const li = document.createElement('li');
+      const headerDiv = document.createElement('div');
+      headerDiv.className = 'task-header';
+      const infoSpan = document.createElement('span');
+      infoSpan.textContent = `#${taskCount}: ${taskText}`;
+      const btnDiv = document.createElement('div');
+      const completeBtn = document.createElement('button');
+      completeBtn.textContent = 'Complete';
+      completeBtn.onclick = function() {
+        if (!completedSpan.textContent) {
+          const completedAt = new Date().toLocaleString();
+          completedSpan.textContent = `Completed: ${completedAt}`;
+          completeBtn.disabled = true;
+        }
+      };
+      const removeBtn = document.createElement('button');
+      removeBtn.textContent = 'Remove';
+      removeBtn.onclick = function() {
+        li.remove();
+      };
+      btnDiv.appendChild(completeBtn);
+      btnDiv.appendChild(removeBtn);
+      headerDiv.appendChild(infoSpan);
+      headerDiv.appendChild(btnDiv);
+      const createdSpan = document.createElement('div');
+      createdSpan.className = 'task-meta';
+      createdSpan.textContent = `Created: ${createdAt}`;
+      const completedSpan = document.createElement('div');
+      completedSpan.className = 'task-completed';
+      li.appendChild(headerDiv);
+      li.appendChild(createdSpan);
+      li.appendChild(completedSpan);
+      document.getElementById('taskList').appendChild(li);
+      input.value = '';
+    }
+  </script>
+</body>
+</html>

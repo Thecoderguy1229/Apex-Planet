@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rajesh Chaitanya Chintakrinda | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --main: #22223b;
+            --accent: #f2e9e4;
+            --highlight: #9a8c98;
+            --card: #4a4e69;
+            --primary: #c9ada7;
+            --success: #38b000;
+            --danger: #d90429;
+            --radius: 20px;
+            --shadow: 0 8px 32px rgba(34,34,59,0.13);
+            --transition: 0.2s cubic-bezier(.4,0,.2,1);
+        }
+        body {
+            margin: 0;
+            background: linear-gradient(135deg, var(--main) 60%, var(--highlight) 100%);
+            color: var(--accent);
+            font-family: 'Roboto', Arial, sans-serif;
+            min-height: 100vh;
+        }
+        .sidebar {
+            position: fixed;
+            left: 0; top: 0; bottom: 0;
+            width: 230px;
+            background: var(--card);
+            color: var(--accent);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1rem;
+            box-shadow: var(--shadow);
+            z-index: 10;
+        }
+        .sidebar .avatar-placeholder {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            margin-bottom: 1.2rem;
+            background: linear-gradient(135deg, var(--highlight), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--main);
+            font-weight: bold;
+            letter-spacing: 2px;
+            border: 4px solid var(--accent);
+            box-shadow: 0 2px 12px rgba(34,34,59,0.09);
+        }
+        .sidebar h1 {
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-size: 1.3rem;
+            margin: 0 0 0.5rem 0;
+            color: var(--primary);
+            text-align: center;
+        }
+        .sidebar p {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            text-align: center;
+        }
+        .sidebar nav {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            width: 100%;
+        }
+        .sidebar nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: background var(--transition), color var(--transition);
+            text-align: center;
+        }
+        .sidebar nav a.active, .sidebar nav a:hover {
+            background: var(--highlight);
+            color: var(--main);
+        }
+
+        .main-content {
+            margin-left: 250px;
+            padding: 2.5rem 2rem 2rem 2rem;
+            max-width: 1100px;
+        }
+
+        section {
+            margin-bottom: 3rem;
+        }
+
+        /* About */
+        .about-section {
+            background: var(--card);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 2rem 2.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .about-section h2 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .about-section p {
+            font-size: 1.1rem;
+            margin-bottom: 1.2rem;
+            color: var(--accent);
+        }
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+        }
+        .skill-badge {
+            background: var(--highlight);
+            color: var(--main);
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            font-size: 1rem;
+            font-weight: 600;
+            box-shadow: 0 1px 4px rgba(34,34,59,0.07);
+        }
+
+        /* Projects */
+        .projects-section {
+            background: var(--accent);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 2rem 2.5rem;
+        }
+        .projects-section h2 {
+            color: var(--main);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+        .projects-grid {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .project-card {
+            background: var(--card);
+            border-radius: 14px;
+            box-shadow: 0 2px 12px rgba(34,34,59,0.09);
+            padding: 1.5rem 1.2rem;
+            min-width: 220px;
+            flex: 1 1 260px;
+            border-left: 6px solid var(--highlight);
+            transition: box-shadow var(--transition), border-color var(--transition), transform var(--transition);
+        }
+        .project-card:hover {
+            box-shadow: 0 8px 32px rgba(34,34,59,0.13);
+            border-left: 6px solid var(--primary);
+            transform: translateY(-7px) scale(1.03);
+        }
+        .project-card h3 {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 0.6rem;
+            font-weight: 700;
+        }
+        .project-card p {
+            color: var(--accent);
+            font-size: 1rem;
+        }
+
+        /* To-Do */
+        .todo-section {
+            background: var(--card);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 2rem 2.5rem;
+            max-width: 420px;
+            margin: 0 auto;
+        }
+        .todo-section h2 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 1.2rem;
+        }
+        .todo-input-row {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.2rem;
+        }
+        .todo-input-row input {
+            flex: 1;
+            padding: 0.7rem;
+            border: 1.5px solid var(--highlight);
+            border-radius: 8px 0 0 8px;
+            font-size: 1rem;
+        }
+        .todo-input-row button {
+            background: var(--highlight);
+            color: var(--main);
+            border: none;
+            border-radius: 0 8px 8px 0;
+            font-weight: 700;
+            font-size: 1rem;
+            padding: 0 1.3rem;
+            cursor: pointer;
+            transition: background var(--transition);
+        }
+        .todo-input-row button:hover {
+            background: var(--primary);
+            color: var(--main);
+        }
+        .todo-list {
+            list-style: none;
+            padding: 0;
+        }
+        .todo-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--accent);
+            margin-bottom: 0.6rem;
+            padding: 0.7rem 1rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            color: var(--main);
+            transition: background 0.18s;
+        }
+        .todo-item.completed {
+            text-decoration: line-through;
+            opacity: 0.6;
+        }
+        .todo-actions button {
+            background: none;
+            border: none;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-left: 0.5rem;
+            color: var(--main);
+            transition: color 0.2s;
+        }
+        .todo-actions button.complete-btn:hover {
+            color: var(--success);
+        }
+        .todo-actions button.delete-btn:hover {
+            color: var(--danger);
+        }
+
+        /* Products */
+        .products-section {
+            background: var(--card);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 2rem 2.5rem;
+        }
+        .products-section h2 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+        .products-controls {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+        }
+        .filter-group, .sort-group {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+        select {
+            padding: 0.5rem;
+            border-radius: 8px;
+            border: 1.5px solid var(--highlight);
+            background: var(--accent);
+            color: var(--main);
+        }
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+        .product-card {
+            background: var(--accent);
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(34,34,59,0.08);
+            padding: 1.2rem 1rem;
+            color: var(--main);
+            border: 2px solid var(--highlight);
+            transition: border 0.2s, transform 0.18s;
+        }
+        .product-card:hover {
+            border: 2px solid var(--primary);
+            transform: scale(1.03);
+        }
+        .product-info h3 {
+            margin-bottom: 0.4rem;
+            color: var(--main);
+            font-size: 1.1rem;
+        }
+        .product-price {
+            font-weight: bold;
+            color: var(--success);
+            margin-bottom: 0.3rem;
+        }
+        .product-rating {
+            color: #ffd700;
+            margin-bottom: 0.3rem;
+        }
+
+        /* Contact */
+        .contact-section {
+            background: var(--accent);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 2rem 2.5rem;
+            max-width: 420px;
+            margin: 0 auto;
+        }
+        .contact-section h2 {
+            text-align: center;
+            color: var(--main);
+            font-size: 1.5rem;
+            margin-bottom: 1.2rem;
+        }
+        .form-group {
+            margin-bottom: 1.1rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.4rem;
+            font-weight: 600;
+            color: var(--main);
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.7rem;
+            border: 1.5px solid var(--highlight);
+            border-radius: 8px;
+            font-size: 1rem;
+            background: var(--white);
+            color: var(--main);
+        }
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        button[type="submit"] {
+            background: var(--highlight);
+            color: var(--main);
+            border: none;
+            padding: 0.7rem 1.3rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            font-weight: 700;
+            transition: background 0.2s, color 0.2s;
+        }
+        button[type="submit"]:hover {
+            background: var(--primary);
+            color: var(--main);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--card);
+            color: var(--primary);
+            text-align: center;
+            padding: 1.5rem 0;
+            font-size: 1rem;
+            margin-top: 2rem;
+            border-radius: var(--radius) var(--radius) 0 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .sidebar {
+                position: static;
+                width: 100%;
+                flex-direction: row;
+                justify-content: space-between;
+                padding: 1rem 1rem;
+                border-radius: 0 0 var(--radius) var(--radius);
+            }
+            .sidebar .avatar-placeholder { margin-bottom: 0; }
+            .main-content { margin-left: 0; padding: 1.5rem 0.5rem; }
+            .projects-grid { flex-direction: column; }
+        }
+        @media (max-width: 600px) {
+            .sidebar { flex-direction: column; align-items: center; }
+            .main-content { padding: 1rem 0.2rem; }
+            .projects-section, .about-section, .products-section, .todo-section, .contact-section {
+                padding: 1rem 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="avatar-placeholder">
+            RC
+        </div>
+        <h1>Rajesh Chaitanya Chintakrinda</h1>
+        <p>Student & Tech Enthusiast<br>Eluru, India</p>
+        <nav>
+            <a href="#about" class="active">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#todo">To-Do</a>
+            <a href="#products">Products</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </aside>
+    <div class="main-content">
+        <section id="about" class="about-section">
+            <h2>About Me</h2>
+            <p>
+                Hi! I'm Rajesh Chaitanya Chintakrinda, a student and tech enthusiast who loves building useful web and software tools. I enjoy learning new technologies and solving real-world problems with code.
+            </p>
+            <div class="skills-list">
+                <span class="skill-badge">HTML</span>
+                <span class="skill-badge">CSS</span>
+                <span class="skill-badge">JavaScript</span>
+                <span class="skill-badge">Node.js</span>
+                <span class="skill-badge">Python</span>
+                <span class="skill-badge">C++</span>
+            </div>
+        </section>
+
+        <section id="projects" class="projects-section">
+            <h2>Intermediate Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Weather Tracker</h3>
+                    <p>Check the current weather for any city using a simple and clean interface.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Expense Manager</h3>
+                    <p>Track your daily expenses, categorize them, and view monthly summaries.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Quiz App</h3>
+                    <p>Take interactive quizzes on various topics and see your score instantly.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Notes Organizer</h3>
+                    <p>Write, edit, and organize your notes efficiently in one place.</p>
+                </div>
+                <div class="project-card">
+                    <h3>To-Do App</h3>
+                    <p>Organize your daily tasks and mark them as complete with a minimal to-do list.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="todo" class="todo-section">
+            <h2>To-Do List</h2>
+            <div class="todo-input-row">
+                <input type="text" id="todo-input" placeholder="Add a new task...">
+                <button id="add-todo">Add</button>
+            </div>
+            <ul class="todo-list" id="todo-list"></ul>
+        </section>
+
+        <section id="products" class="products-section">
+            <h2>Shop Products</h2>
+            <div class="products-controls">
+                <div class="filter-group">
+                    <label for="category-filter">Category:</label>
+                    <select id="category-filter">
+                        <option value="all">All</option>
+                        <option value="gadgets">Gadgets</option>
+                        <option value="books">Books</option>
+                        <option value="tools">Tools</option>
+                    </select>
+                </div>
+                <div class="sort-group">
+                    <label for="sort-by">Sort:</label>
+                    <select id="sort-by">
+                        <option value="default">Default</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="rating">Rating</option>
+                    </select>
+                </div>
+            </div>
+            <div class="products-grid" id="products-grid"></div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <h2>Contact Me</h2>
+            <form id="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" required></textarea>
+                </div>
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+    </div>
+    <footer>
+        <div>
+            <p>© 2025 Rajesh Chaitanya Chintakrinda. All rights reserved.</p>
+            <p>Email: rajesh.chaitabya@email.com | Eluru, India</p>
+        </div>
+    </footer>
+    <script>
+        // To-Do App
+        document.addEventListener('DOMContentLoaded', function() {
+            const todoInput = document.getElementById('todo-input');
+            const addTodoBtn = document.getElementById('add-todo');
+            const todoList = document.getElementById('todo-list');
+            let todos = JSON.parse(localStorage.getItem('rajesh_todos')) || [];
+
+            function renderTodos() {
+                todoList.innerHTML = '';
+                todos.forEach((todo, idx) => {
+                    const li = document.createElement('li');
+                    li.className = 'todo-item' + (todo.completed ? ' completed' : '');
+                    li.innerHTML = `
+                        <span>${todo.text}</span>
+                        <span class="todo-actions">
+                            <button class="complete-btn" data-index="${idx}" title="Complete">&#10003;</button>
+                            <button class="delete-btn" data-index="${idx}" title="Delete">&#10005;</button>
+                        </span>
+                    `;
+                    todoList.appendChild(li);
+                });
+                document.querySelectorAll('.complete-btn').forEach(btn => btn.onclick = toggleComplete);
+                document.querySelectorAll('.delete-btn').forEach(btn => btn.onclick = deleteTodo);
+            }
+            function addTodo() {
+                const text = todoInput.value.trim();
+                if (text) {
+                    todos.push({ text, completed: false });
+                    localStorage.setItem('rajesh_todos', JSON.stringify(todos));
+                    todoInput.value = '';
+                    renderTodos();
+                }
+            }
+            function toggleComplete(e) {
+                const idx = e.target.dataset.index;
+                todos[idx].completed = !todos[idx].completed;
+                localStorage.setItem('rajesh_todos', JSON.stringify(todos));
+                renderTodos();
+            }
+            function deleteTodo(e) {
+                const idx = e.target.dataset.index;
+                todos.splice(idx, 1);
+                localStorage.setItem('rajesh_todos', JSON.stringify(todos));
+                renderTodos();
+            }
+            addTodoBtn.onclick = addTodo;
+            todoInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') addTodo();
+            });
+            renderTodos();
+
+            // Products
+            const products = [
+                { id: 1, name: 'Mini Weather Station', category: 'gadgets', price: 19.99, rating: 4.5 },
+                { id: 2, name: 'Pocket Calculator', category: 'tools', price: 9.99, rating: 4.2 },
+                { id: 3, name: 'JavaScript Basics Book', category: 'books', price: 14.99, rating: 4.7 },
+                { id: 4, name: 'Python Quickstart Guide', category: 'books', price: 16.99, rating: 4.8 },
+                { id: 5, name: 'LED Flashlight', category: 'gadgets', price: 7.99, rating: 4.1 },
+                { id: 6, name: 'Node.js Handbook', category: 'books', price: 18.99, rating: 4.6 }
+            ];
+            const productsGrid = document.getElementById('products-grid');
+            const categoryFilter = document.getElementById('category-filter');
+            const sortBy = document.getElementById('sort-by');
+
+            function renderProducts() {
+                const category = categoryFilter.value;
+                const sort = sortBy.value;
+                let filtered = products.slice();
+                if (category !== 'all') {
+                    filtered = filtered.filter(p => p.category === category);
+                }
+                switch (sort) {
+                    case 'price-low': filtered.sort((a, b) => a.price - b.price); break;
+                    case 'price-high': filtered.sort((a, b) => b.price - a.price); break;
+                    case 'rating': filtered.sort((a, b) => b.rating - a.rating); break;
+                    default: filtered.sort((a, b) => a.id - b.id);
+                }
+                productsGrid.innerHTML = '';
+                filtered.forEach(product => {
+                    const card = document.createElement('div');
+                    card.className = 'product-card';
+                    card.innerHTML = `
+                        <div class="product-info">
+                            <h3>${product.name}</h3>
+                            <div class="product-price">$${product.price.toFixed(2)}</div>
+                            <div class="product-rating">${'★'.repeat(Math.floor(product.rating))}${'☆'.repeat(5 - Math.floor(product.rating))} (${product.rating})</div>
+                            <div>Category: ${product.category.charAt(0).toUpperCase() + product.category.slice(1)}</div>
+                        </div>
+                    `;
+                    productsGrid.appendChild(card);
+                });
+            }
+            categoryFilter.onchange = renderProducts;
+            sortBy.onchange = renderProducts;
+            renderProducts();
+
+            // Contact Form
+            const contactForm = document.getElementById('contact-form');
+            contactForm.onsubmit = function(e) {
+                e.preventDefault();
+                alert('Thank you for reaching out! I will reply soon.');
+                contactForm.reset();
+            };
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NovaMart is your modern online marketplace for the latest in electronics, fashion, home decor, and more. Shop trending products and exclusive deals.">
+    <title>NovaMart - Your Modern Marketplace</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" xintegrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8UoGIt0VOKvgz4vlAIqp7sxTTbatztdeiK8VZOj3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="top-bar">
+            <div class="container">
+                <a href="#" class="logo">NovaMart</a>
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="Search products...">
+                    <button id="searchBtn"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="user-icons">
+                    <a href="#" aria-label="Wishlist"><i class="fas fa-heart"></i></a>
+                    <a href="#" aria-label="User Account"><i class="fas fa-user"></i></a>
+                    <a href="#" aria-label="Shopping Cart"><i class="fas fa-shopping-cart"></i></a>
+                </div>
+                <button class="hamburger" id="hamburger-toggle" aria-label="Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <nav class="main-nav" id="main-nav">
+            <div class="container">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#products">Shop</a></li>
+                    <li><a href="#categories">Categories</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>Shop the Future, Today</h1>
+                <p>Discover trending products and exclusive deals at NovaMart</p>
+                <a href="#products" class="btn">Start Shopping</a>
+            </div>
+        </section>
+
+        <section class="special-offer">
+            <div class="container">
+                <div class="offer-content">
+                    <h2>Mega Summer Sale!</h2>
+                    <p class="discount">Up to 60% OFF on Electronics & Fashion</p>
+                    <p class="price">Starting from just ₹599</p>
+                    <div class="countdown-timer" id="countdown-timer">
+                        <div class="time-block">
+                            <span id="days">00</span>
+                            <small>Days</small>
+                        </div>
+                        <div class="time-block">
+                            <span id="hours">00</span>
+                            <small>Hours</small>
+                        </div>
+                        <div class="time-block">
+                            <span id="minutes">00</span>
+                            <small>Minutes</small>
+                        </div>
+                        <div class="time-block">
+                            <span id="seconds">00</span>
+                            <small>Seconds</small>
+                        </div>
+                    </div>
+                    <a href="#products" class="btn btn-secondary">Shop Now</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="products" class="featured-products">
+            <div class="container">
+                <h2 class="section-title">Featured Products</h2>
+                <div class="products-grid" id="productsGrid">
+                    </div>
+            </div>
+        </section>
+
+        <section id="categories" class="categories-section">
+            <div class="container">
+                <h2 class="section-title">Shop by Category</h2>
+                <div class="category-grid">
+                    <div class="category-card">
+                        <i class="fas fa-tv"></i>
+                        <h3>Electronics</h3>
+                    </div>
+                    <div class="category-card">
+                        <i class="fas fa-tshirt"></i>
+                        <h3>Fashion</h3>
+                    </div>
+                    <div class="category-card">
+                        <i class="fas fa-couch"></i>
+                        <h3>Home Decor</h3>
+                    </div>
+                    <div class="category-card">
+                        <i class="fas fa-basketball-ball"></i>
+                        <h3>Sports</h3>
+                    </div>
+                    <div class="category-card">
+                        <i class="fas fa-book"></i>
+                        <h3>Books</h3>
+                    </div>
+                    <div class="category-card">
+                        <i class="fas fa-spa"></i>
+                        <h3>Beauty</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about-us">
+            <div class="container about-us-container">
+                <div class="about-image">
+                    <img src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&w=600&q=80" alt="Team working at NovaMart">
+                </div>
+                <div class="about-content">
+                    <h2 class="section-title">About NovaMart</h2>
+                    <p>Welcome to NovaMart, your one-stop destination for the latest and greatest in electronics, fashion, home, and more.</p>
+                    <p>At NovaMart, we blend innovation with convenience, offering a curated selection of products from trusted brands. Our mission is to make shopping seamless, enjoyable, and affordable for everyone.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="reviews" class="customer-reviews">
+            <div class="container">
+                <h2 class="section-title">What Our Customers Say</h2>
+                <div class="reviews-slider-wrapper">
+                    <button id="prev-btn" class="slider-btn prev-btn" aria-label="Previous Review">&#10094;</button>
+                    <div class="reviews-slider" id="reviews-slider">
+                        <div class="review-card">
+                            <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f468.png" alt="Amit Sharma Avatar" class="avatar">
+                            <h4>Amit Sharma</h4>
+                            <div class="rating">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <p>"Fast shipping and amazing quality. NovaMart is my new favorite store!"</p>
+                        </div>
+                        <div class="review-card">
+                            <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f469.png" alt="Priya Singh Avatar" class="avatar">
+                            <h4>Priya Singh</h4>
+                            <div class="rating">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <p>"Loved the variety and the deals. Customer support was super helpful!"</p>
+                        </div>
+                        <div class="review-card">
+                            <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f468-200d-1f4bc.png" alt="Rahul Verma Avatar" class="avatar">
+                            <h4>Rahul Verma</h4>
+                            <div class="rating">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <p>"Great prices and easy checkout. Will definitely shop again."</p>
+                        </div>
+                        <div class="review-card">
+                            <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f469-200d-1f4bc.png" alt="Sneha Patel Avatar" class="avatar">
+                            <h4>Sneha Patel</h4>
+                            <div class="rating">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <p>"The home decor section is beautiful. Highly recommend NovaMart!"</p>
+                        </div>
+                        <div class="review-card">
+                            <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f9d4.png" alt="Vikram Joshi Avatar" class="avatar">
+                            <h4>Vikram Joshi</h4>
+                            <div class="rating">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                            </div>
+                             <p>"Good value for money. Delivery was on time and the product met expectations."</p>
+                        </div>
+                        <div class="review-card">
+                            <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f470.png" alt="Meera Nair Avatar" class="avatar">
+                            <h4>Meera Nair</h4>
+                            <div class="rating">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <p>"Amazing experience! The beauty products are top-notch and delivery was super quick."</p>
+                        </div>
+                    </div>
+                    <button id="next-btn" class="slider-btn next-btn" aria-label="Next Review">&#10095;</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-support">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Get In Touch</h2>
+                </div>
+                <div class="contact-wrapper">
+                    <div class="contact-info">
+                        <h3>Contact Information</h3>
+                        <p>Have a question or need help? We're here for you. Reach out to us via phone, email, or our contact form.</p>
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>123 NovaMart Avenue, Tech City, 110001</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:support@novamart.com">support@novamart.com</a>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <a href="tel:+911234567890">+91 12345 67890</a>
+                        </div>
+                    </div>
+                    <div class="contact-form-wrapper">
+                        <h3>Send us a Message</h3>
+                        <form id="contact-form">
+                            <input type="text" name="name" placeholder="Your Name" required>
+                            <input type="email" name="email" placeholder="Your Email" required>
+                            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                            <button type="submit" class="btn">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq-section">
+            <div class="container">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>How do I track my order?</span>
+                            <div class="faq-icon">
+                                <i class="fas fa-plus"></i>
+                                <i class="fas fa-minus"></i>
+                            </div>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Once your order ships, you’ll receive a tracking link via email. You can also find the tracking information in your account's order history.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>What is your return policy?</span>
+                             <div class="faq-icon">
+                                <i class="fas fa-plus"></i>
+                                <i class="fas fa-minus"></i>
+                            </div>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Returns are accepted within 30 days of delivery. Items must be unused, in their original condition, and with all original packaging. To initiate a return, please visit the returns section in your account.</p>
+                        </div>
+                    </div>
+                     <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Do you offer international shipping?</span>
+                             <div class="faq-icon">
+                                <i class="fas fa-plus"></i>
+                                <i class="fas fa-minus"></i>
+                            </div>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Yes, we ship to over 50 countries worldwide. Shipping fees and delivery times vary by destination. All applicable duties and taxes will be calculated at checkout.</p>
+                        </div>
+                    </div>
+                     <div class="faq-item">
+                        <button class="faq-question">
+                            <span>How can I contact support?</span>
+                             <div class="faq-icon">
+                                <i class="fas fa-plus"></i>
+                                <i class="fas fa-minus"></i>
+                            </div>
+                        </button>
+                        <div class="faq-answer">
+                            <p>You can use the contact form on this page, email us directly at support@novamart.com, or call our helpline. We are available 24/7 to assist you.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-col">
+                <h3>NovaMart</h3>
+                <p>Your one-stop destination for the latest in tech, fashion, and home decor. Seamless shopping, unbeatable prices.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#products">Shop</a></li>
+                    <li><a href="#categories">Categories</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Policies</h3>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Return Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Connect With Us</h3>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 NovaMart. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
